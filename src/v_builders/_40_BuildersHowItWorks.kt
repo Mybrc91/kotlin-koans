@@ -7,7 +7,7 @@ fun todoTask40(): Nothing = TODO(
     """
         Task 40.
         Look at the questions below and give your answers:
-        change 'insertAnswerHere()' in task26's map to your choice (a, b or c).
+        change 'insertAnswerHere()' in task40's map to your choice (a, b or c).
 
         All the constants are imported via 'util.questions.Answer.*', so they can be accessed by name.
 
@@ -78,8 +78,8 @@ which of the following is true:
   a. this code doesn't compile
   b. 'this' refers to an instance of an outer class
   c. 'this' refers to a receiver parameter TR of the function literal:
-            tr (color = "yellow") { TR.(): Unit ->
-                  this.td {
+            tr (color = "yellow") {
+                  this@tr.td {
                       text("Product")
                   }
             }

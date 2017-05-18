@@ -1,9 +1,9 @@
 package iv_properties
 
-import kotlin.properties.ReadWriteProperty
-import util.TODO
-import java.util.Calendar
 import iii_conventions.MyDate
+import util.TODO
+import java.util.*
+import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 fun todoTask35(): Nothing = TODO(
@@ -14,7 +14,7 @@ fun todoTask35(): Nothing = TODO(
 
         Implement the members of the class 'EffectiveDate' so it can be delegated to.
         Store only the time in milliseconds in 'timeInMillis' property.
-        Use the extension functions 'MyDate.toMillis' and 'Long.ToDate'.
+        Use the extension functions 'MyDate.toMillis' and 'Long.toDate'.
     """,
     references = { date: MyDate -> date.toMillis().toDate()}
 )
@@ -23,7 +23,7 @@ class D {
     var date by EffectiveDate()
     // The property date$delegate of type EffectiveDate is created;
     // the generated 'get' and 'set' accessors for 'date' are delegated to it.
-    // Browse the Kotlin tool window in IntelliJ for details.
+    // You can look at the bytecode (by calling "Show Kotlin Bytecode" action in IntelliJ IDEA) for details.
 }
 
 class EffectiveDate<R> : ReadWriteProperty<R, MyDate> {
@@ -35,7 +35,8 @@ class EffectiveDate<R> : ReadWriteProperty<R, MyDate> {
 
 fun MyDate.toMillis(): Long {
     val c = Calendar.getInstance()
-    c.set(year, month, dayOfMonth)
+    c.set(year, month, dayOfMonth, 0, 0, 0)
+    c.set(Calendar.MILLISECOND, 0)
     return c.timeInMillis
 }
 

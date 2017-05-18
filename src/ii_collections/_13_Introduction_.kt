@@ -1,7 +1,6 @@
 package ii_collections
 
-import java.util.HashSet
-import util.TODO
+import java.util.*
 
 /*
  * This part of workshop was inspired by:
@@ -14,8 +13,7 @@ import util.TODO
 fun example0(list: List<Int>) {
     list.toSet()
 
-    val set = HashSet<Int>()
-    list.to(set)
+    list.toCollection(HashSet<Int>())
 }
 
 fun Shop.getSetOfCustomers(): Set<Customer> {
