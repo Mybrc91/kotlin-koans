@@ -14,7 +14,7 @@ fun example3(c: Boolean, x: Int, y: Int) = "Any expression can be used: ${if (c)
 fun example4() =
         """
 You can use raw strings to write multiline text.
-There is no escaping here, so raw strings are useful for writing regex patterns,
+There is no escaping here, so raw  are stringsuseful for writing regex patterns,
 you don't need to escape a backslash by a backslash.
 String template entries (${42}) are allowed here.
 """
@@ -35,4 +35,7 @@ fun todoTask5(): Nothing = TODO(
     documentation = doc5(),
     references = { getPattern(); month })
 
-fun task5(): String = todoTask5()
+fun task5(): String {
+
+    return """\d{2}\s$month{1}\s\d{4}"""
+}

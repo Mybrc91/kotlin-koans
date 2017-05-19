@@ -7,12 +7,11 @@ fun example() {
     result == listOf('a', 'b', 'c', '1', '2')
 }
 
-val Customer.orderedProducts: Set<Product> get() {
+val Customer.orderedProducts: Set<Product> get() = this.orders.filter { it.isDelivered }.flatMap { it.products.toList() }.toHashSet()
     // Return all products this customer has ordered
-    todoCollectionTask()
-}
 
 val Shop.allOrderedProducts: Set<Product> get() {
     // Return all products that were ordered by at least one customer
-    todoCollectionTask()
+    val hasLeastOne: (Order) -> Boolean = { it.isDelivered }
+    return this.customers.flatMap { it.orders.filter(hasLeastOne).flatMap { it.products.toList() } }.toHashSet()
 }

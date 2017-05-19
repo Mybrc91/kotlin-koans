@@ -12,28 +12,29 @@ fun example2(list: List<Int>) {
 
     val firstPositiveNumber: Int? = list.firstOrNull { it > 0 }
 }
-
+val containes: (City , City) -> Boolean = {x, y -> x.equals(y) }
 fun Customer.isFrom(city: City): Boolean {
     // Return true if the customer is from the given city
-    todoCollectionTask()
+
+    return containes(this.city,city)
 }
 
 fun Shop.checkAllCustomersAreFrom(city: City): Boolean {
     // Return true if all customers are from the given city
-    todoCollectionTask()
+    return this.customers.all { containes(it.city ,city) }
 }
 
 fun Shop.hasCustomerFrom(city: City): Boolean {
     // Return true if there is at least one customer from the given city
-    todoCollectionTask()
+    return this.customers.any{ containes(it.city , city)}
 }
 
 fun Shop.countCustomersFrom(city: City): Int {
     // Return the number of customers from the given city
-    todoCollectionTask()
+    return this.customers.count { containes.invoke(it.city ,city) }
 }
 
 fun Shop.findAnyCustomerFrom(city: City): Customer? {
     // Return a customer who lives in the given city, or null if there is none
-    todoCollectionTask()
+    return this.customers.firstOrNull { containes(it.city ,city) }
 }
