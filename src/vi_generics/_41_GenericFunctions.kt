@@ -2,6 +2,7 @@ package vi_generics
 
 import util.TODO
 import java.util.*
+import kotlin.reflect.jvm.internal.impl.resolve.scopes.receivers.ThisClassReceiver
 
 fun task41(): Nothing = TODO(
     """
@@ -19,12 +20,21 @@ fun task41(): Nothing = TODO(
         }
 )
 
-fun List<String>.partitionWordsAndLines(): Pair<List<String>, List<String>> {
-    task41()
-//    return partitionTo(ArrayList<String>(), ArrayList()) { s -> !s.contains(" ") }
+public fun <T, E:MutableCollection<T>> Collection<T>.partitionTo(first: E ,second: E, spilte: (T) -> Boolean ): Pair<E,E> {
+    for (e in this){
+        if (spilte(e)){
+            first.add(e)
+        }else
+            second.add(e)
+    }
+    return Pair(first,second)
 }
 
+fun List<String>.partitionWordsAndLines(): Pair<List<String>, List<String>> {
+    return return partitionTo(ArrayList<String>(), ArrayList()) { s -> !s.contains(" ") }
+}
+
+
 fun Set<Char>.partitionLettersAndOtherSymbols(): Pair<Set<Char>, Set<Char>> {
-    task41()
-//    return partitionTo(HashSet<Char>(), HashSet()) { c -> c in 'a'..'z' || c in 'A'..'Z'}
+    return partitionTo(HashSet<Char>(), HashSet()) { c -> c in 'a'..'z' || c in 'A'..'Z'}
 }

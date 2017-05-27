@@ -6,6 +6,7 @@ import org.junit.Test
 class _39_Html_Builders {
     @Test fun productTableIsFilled() {
         val result = renderProductTable()
+        print(result)
         assertTrue("Product table should contain corresponding data", result.contains("cactus"))
     }
 

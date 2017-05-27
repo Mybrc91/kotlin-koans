@@ -34,6 +34,7 @@ fun <T: Tag> Tag.doInit(tag: T, init: T.() -> Unit): T {
 class Html: Tag("html")
 class Table: Tag("table")
 class Center: Tag("center")
+class Div: Tag("div")
 class TR: Tag("tr")
 class TD: Tag("td")
 class Text(val text: String): Tag("b") {
@@ -44,6 +45,7 @@ fun html(init: Html.() -> Unit): Html = Html().apply(init)
 
 fun Html.table(init : Table.() -> Unit) = doInit(Table(), init)
 fun Html.center(init : Center.() -> Unit) = doInit(Center(), init)
+fun Html.div(init: Div.() -> Unit) = doInit(Div(), init)
 
 fun Table.tr(color: String? = null, init : TR.() -> Unit) = doInit(TR(), init).set("bgcolor", color)
 
