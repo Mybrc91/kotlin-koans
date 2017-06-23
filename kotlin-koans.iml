@@ -11,5 +11,7 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
     <orderEntry type="library" name="gradle-wrapper" level="project" />
+    <orderEntry type="library" name="io.reactivex.rxjava2:rxjava:2.1.0" level="project" />
+    <orderEntry type="library" name="io.reactivex.rxjava2:rxkotlin:2.0.3" level="project" />
   </component>
 </module>
